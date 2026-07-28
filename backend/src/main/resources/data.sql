@@ -1,0 +1,6 @@
+INSERT INTO jobs (title, company, location, salary, description) VALUES
+('Senior Software Engineer', 'TechCorp Inc.', 'New York, NY', '$120,000 - $150,000', 'We are seeking a Senior Software Engineer to join our growing team. You will be responsible for designing and implementing scalable web applications using modern technologies.'),
+('Product Manager', 'Innovate Solutions', 'San Francisco, CA', '$100,000 - $130,000', 'Looking for an experienced Product Manager to lead product strategy and execution for our SaaS platform.'),
+('UX/UI Designer', 'DesignStudio', 'Remote', '$80,000 - $100,000', 'We need a talented UX/UI Designer to create intuitive and beautiful user interfaces for our web and mobile applications.'),
+('DevOps Engineer', 'CloudSystems', 'Seattle, WA', '$110,000 - $140,000', 'Seeking a DevOps Engineer to help us build and maintain our cloud infrastructure on AWS and Kubernetes.'),
+('Data Scientist', 'Analytics Corp', 'Boston, MA', '$90,000 - $120,000', 'Join our data science team to build machine learning models and derive insights from large datasets.');
