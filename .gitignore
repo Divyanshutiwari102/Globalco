@@ -1,2 +1,22 @@
-# Project exclude paths
+# Java
 /backend/target/
+
+# Node
+/frontend/node_modules/
+/node_modules/
+
+# Build
+/frontend/dist/
+/dist/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*
