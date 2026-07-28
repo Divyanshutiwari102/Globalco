@@ -1,7 +1,7 @@
 # CareerHub - Modern Job Board Platform
 
 A full-stack job board application built with Spring Boot 3 and React, featuring JWT authentication, role-based access control, and responsive design.
-
+![Build](https://github.com/Divyanshutiwari102/Globalco/actions/workflows/ci-cd.yml/badge.svg)
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
