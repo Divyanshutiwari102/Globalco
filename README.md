@@ -142,13 +142,17 @@ The application follows a layered architecture:
 The system consists of three main components interacting as follows:
 ```mermaid
 graph LR
-    A[Frontend (Vercel)] -->|HTTPS/API Calls| B[Backend API (Render)]
-    B -->|JDBC/ORM| C[(PostgreSQL Database)]
+    A[Frontend (Vercel)] -->|HTTPS API Calls| B[Backend API (Render)]
+    B -->|JDBC ORM| C[(PostgreSQL Database)]
     B -->|Validates JWT| D[JWT Secret/Validation]
-    style A fill:#f9f,stroke:#333
-    style B fill:#bbf,stroke:#333
-    style C fill:#bfb,stroke:#333
-    style D fill:#f99,stroke:#333
+    classDef frontend fill:#f9f,stroke:#333;
+    classDef backend fill:#bbf,stroke:#333;
+    classDef database fill:#bfb,stroke:#333;
+    classDef security fill:#f99,stroke:#333;
+    class A frontend
+    class B backend
+    class C database
+    class D security
 ```
 
 ### Low-Level Design (LLD)
@@ -207,6 +211,7 @@ sequenceDiagram
     JobSeeker->>FE: View job details & apply
     FE->>BE: POST /api/applications (application data, Authorization: Bearer <user_jwt>)
     BE->>BE: Validate user token & check if already applied
+    already applied
     BE->>DB: Insert application (with resume URL, timestamp)
     BE-->>FE: 200 OK (Application submitted)
 
@@ -295,7 +300,7 @@ erDiagram
 ### Frontend Setup
 1. Navigate to `frontend` directory
 2. Run `npm install`
-3. Create `.env file based on `.env.example`
+3. Create `.env` file based on `.env.example`
 4. Run `npm run dev`
 
 ### Environment Variables
@@ -385,8 +390,7 @@ To enable the CI/CD pipeline, configure the following secrets in your GitHub rep
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
-- Spring Boot and React communities for excellent documentation
+## Acknowledgments field for excellent documentation
 - Tailwind CSS for the utility-first CSS framework
 - JWT.io for the JSON Web Token standard
 - All open-source libraries used in this project
