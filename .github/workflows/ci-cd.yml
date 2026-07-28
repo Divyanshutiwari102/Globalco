@@ -2,31 +2,35 @@ name: CareerHub CI/CD
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      # Checkout Repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Setup Java
+      # Setup Java
+      - name: Setup Java 21
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 21
           cache: maven
 
-      - name: Make Maven Wrapper Executable
-        run: chmod +x backend/mvnw
-
+      # Build Backend
       - name: Build Backend
         working-directory: backend
-        run: ./mvnw clean verify
+        run: mvn clean verify
 
+      # Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -34,10 +38,12 @@ jobs:
           cache: npm
           cache-dependency-path: frontend/package-lock.json
 
+      # Install Frontend Dependencies
       - name: Install Frontend Dependencies
         working-directory: frontend
         run: npm ci
 
+      # Build Frontend
       - name: Build Frontend
         working-directory: frontend
         run: npm run build
