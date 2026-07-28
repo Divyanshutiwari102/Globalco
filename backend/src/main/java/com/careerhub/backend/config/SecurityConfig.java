@@ -43,7 +43,10 @@ public class SecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         // <-- FRONTEND ORIGIN (Vercel) -->
-        config.setAllowedOrigins(List.of("https://globalco-eta.vercel.app"));
+        config.setAllowedOriginPatterns(List.of(
+                "https://*.vercel.app",
+                "http://localhost:*"
+        ));
 
         // Allow the methods your API uses (including OPTIONS for pre‑flight)
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
