@@ -141,18 +141,27 @@ The application follows a layered architecture:
 ### High-Level Design (HLD)
 The system consists of three main components interacting as follows:
 ```mermaid
-graph LR
-    A[Frontend (Vercel)] -->|"HTTPS API Calls"| B[Backend API (Render)]
-    B -->|"JDBC ORM"| C[(PostgreSQL Database)]
-    B -->|"Validates JWT"| D[JWT Secret/Validation]
-    classDef frontend fill:#f9f,stroke:#333;
-    classDef backend fill:#bbf,stroke:#333;
-    classDef database fill:#bfb,stroke:#333;
-    classDef security fill:#f99,stroke:#333;
-    class A frontend
-    class B backend
-    class C database
-    class D security
+flowchart LR
+
+    FE["React Frontend<br/>Vercel"]
+    API["Spring Boot REST API<br/>Render"]
+    DB[("PostgreSQL")]
+    JWT["JWT Authentication"]
+
+    FE -->|"HTTPS REST API"| API
+    API -->|"Spring Data JPA"| DB
+    API -->|"JWT Validation"| JWT
+
+    classDef frontend fill:#61DAFB,color:#000,stroke:#333
+    classDef backend fill:#6DB33F,color:#fff,stroke:#333
+    classDef database fill:#336791,color:#fff,stroke:#333
+    classDef security fill:#F39C12,color:#fff,stroke:#333
+
+    class FE frontend
+    class API backend
+    class DB database
+    class JWT security
+
 ```
 
 ### Low-Level Design (LLD)
